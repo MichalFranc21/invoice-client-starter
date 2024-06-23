@@ -25,41 +25,45 @@ import {Link} from "react-router-dom";
 
 const PersonTable = ({label, items, deletePerson}) => {
     return (
-        <div>
+        <div className="table-div">
             <p>
                 {label} {items.length}
             </p>
 
-            <table className="table table-bordered">
+            <table className="invoice-table">
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th className="id">ID</th>
                     <th>Jméno</th>
+                    <th>Telefon</th>
+                    <th>Město</th>
                     <th colSpan={3}>Akce</th>
                 </tr>
                 </thead>
                 <tbody>
                 {items.map((item, index) => (
                     <tr key={index + 1}>
-                        <td>{index + 1}</td>
+                        <td className="id">{item._id}</td>
                         <td>{item.name}</td>
+                        <td>{item.telephone}</td>
+                        <td>{item.city}</td>
                         <td>
                             <div className="btn-group">
                                 <Link
                                     to={"/persons/show/" + item._id}
-                                    className="btn btn-sm btn-info"
+                                    className="show-button"
                                 >
                                     Zobrazit
                                 </Link>
                                 <Link
                                     to={"/persons/edit/" + item._id}
-                                    className="btn btn-sm btn-warning"
+                                    className="edit-button"
                                 >
                                     Upravit
                                 </Link>
                                 <button
                                     onClick={() => deletePerson(item._id)}
-                                    className="btn btn-sm btn-danger"
+                                    className="delete-button"
                                 >
                                     Odstranit
                                 </button>

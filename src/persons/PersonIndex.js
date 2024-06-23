@@ -28,15 +28,25 @@ import PersonTable from "./PersonTable";
 
 const PersonIndex = () => {
     const [persons, setPersons] = useState([]);
+    const [flashMessage, setFlashMessage] = useState({ show: false, theme: "", text: "" });
 
     const deletePerson = async (id) => {
         try {
             await apiDelete("/api/persons/" + id);
+            setFlashMessage({
+                show: true,
+                theme: "danger",
+                text: "Osoba byla smazána."
+            })
+            setPersons(persons.filter((item) => item._id !== id));
+            setTimeout(() => {
+                setFlashMessage({ show: false, theme: "", text: "" });
+            }, 2000);
         } catch (error) {
             console.log(error.message);
             alert(error.message)
         }
-        setPersons(persons.filter((item) => item._id !== id));
+        
     };
 
     useEffect(() => {
@@ -46,6 +56,11 @@ const PersonIndex = () => {
     return (
         <div>
             <h1>Seznam osob</h1>
+            {flashMessage.show && (
+                <div className={`alert alert-${flashMessage.theme}`}>
+                    {flashMessage.text}
+                </div>
+                )}
             <PersonTable
                 deletePerson={deletePerson}
                 items={persons}

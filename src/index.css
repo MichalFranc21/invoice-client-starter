@@ -1,0 +1,172 @@
+body {
+    background-color: #36a25c;
+    color: gray;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    
+}
+
+.form-control {
+    background-color: rgb(0, 0, 0);
+    color: gray;
+}
+
+.form-control:focus {
+    background-color: rgb(0, 0, 0);
+    color: gray;
+
+}
+.container {
+    box-shadow: 0px 0px 500px rgb(0, 0, 0);
+    padding-bottom: 15px;
+    height: 100vw;
+    
+    background-color: rgb(0, 0, 0);}
+
+.invoice-table {
+   color: aliceblue;
+   width: 100%;
+   max-width: 100%;
+   margin-bottom: 15px;
+   margin-top: 15px;
+   
+}
+
+td {
+    border: 1px solid grey ;
+    text-align: center;
+    padding: 10px;
+
+}
+
+th {
+    border: 1px solid grey ;
+    background-color: rgb(50, 50, 50);
+    text-align: center;
+    
+    padding: 10px;
+}
+
+
+
+.show-button {
+    background-color: #3e8a58;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 5px 0px 0px 5px;
+}
+
+.show-button:hover {
+    color: antiquewhite;
+}
+
+.edit-button {
+    background-color: #e6e6e6;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    font-size: 20px;
+}
+
+.edit-button:hover {
+    color: rgb(0, 0, 0);
+}
+
+.delete-button{
+    background-color: #a61f1f;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 0px 5px 5px 0px;
+    border: none; 
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    text-wrap: wrap;
+    padding-top: 40px;
+}
+
+.list {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    list-style-type: none;
+    width: 80%;
+    padding: 0;
+    cursor: pointer;
+}
+
+li {
+    color: antiquewhite;
+    padding: 5px 10px;
+    background-color: rgb(50, 50, 50);
+    width: 100%;
+    text-align: center;
+    transition: 0.4s;
+}
+
+li:hover {
+    filter: brightness(1.2);
+}
+
+.revenue {
+    text-align: end;
+}
+
+.person-stat {
+    color: aliceblue;
+    width: 60%;
+    margin-left: 19%;
+}
+
+.filter-button {
+    margin: 25px auto;
+    margin-bottom: -20px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    transition: 0.4s;
+    border: none;
+    box-shadow: 0px 0px 10px gray;
+    border-radius: 5px;
+}
+.filter-button:hover {
+ background-color: rgb(255, 255, 255);
+ border: none
+ ;
+}
+
+.table-div {
+    width: 100%;
+}
+
+.id {
+    width: 5%;
+}
+
+.filter-div {
+    display: flex;
+    justify-content: space-around;
+}
+
+.detail-div {
+    padding-top: 5%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.p {
+    padding-left: 5%;
+}
+
+.invoice-detail {
+    padding-top: 4%;
+}

@@ -52,6 +52,7 @@ const PersonForm = () => {
     const [sentState, setSent] = useState(false);
     const [successState, setSuccess] = useState(false);
     const [errorState, setError] = useState(null);
+    const [flashMessage, setFlashMessage] = useState({ show: false, theme: "", text: "" })
 
     useEffect(() => {
         if (id) {
@@ -66,13 +67,28 @@ const PersonForm = () => {
             .then((data) => {
                 setSent(true);
                 setSuccess(true);
-                navigate("/persons");
+                setFlashMessage({
+                    show: true,
+                    theme: "success",
+                    text: "Úspěšně dokončeno."
+                });
+                setTimeout(() => {
+                    setFlashMessage({ show: false, theme: "", text: "" });
+                    navigate("/persons");
+                }, 2000);
             })
             .catch((error) => {
                 console.log(error.message);
-                setError(error.message);
+                setFlashMessage({
+                    show: true,
+                    theme: "danger",
+                    text: error.message
+                });
                 setSent(true);
                 setSuccess(false);
+                setTimeout(() => {
+                    setFlashMessage({ show: false, theme: "", text: "" });
+                }, 2000);
             });
     };
 
@@ -82,16 +98,6 @@ const PersonForm = () => {
     return (
         <div>
             <h1>{id ? "Upravit" : "Vytvořit"} osobnost</h1>
-            <hr/>
-            {errorState ? (
-                <div className="alert alert-danger">{errorState}</div>
-            ) : null}
-            {sent && (
-                <FlashMessage
-                    theme={success ? "success" : ""}
-                    text={success ? "Uložení osobnosti proběhlo úspěšně." : ""}
-                />
-            )}
             <form onSubmit={handleSubmit}>
                 <InputField
                     required={true}
@@ -270,7 +276,12 @@ const PersonForm = () => {
                     }}
                     checked={Country.SLOVAKIA === person.country}
                 />
-
+                <br></br>
+                {flashMessage.show && (
+                <div className={`alert alert-${flashMessage.theme}`}>
+                    {flashMessage.text}
+                </div>
+            )}
                 <input type="submit" className="btn btn-primary" value="Uložit"/>
             </form>
         </div>
